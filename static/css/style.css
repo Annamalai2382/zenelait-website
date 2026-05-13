@@ -468,7 +468,7 @@ header {
     width: 100%;
     height: 100%;
     z-index: 1;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(42, 0, 0, 0.4), rgba(0, 0, 0, 0.6)); /* Multilayered contrast overlay */
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(42, 0, 0, 0.6), rgba(0, 0, 0, 0.8)); /* Deepened contrast overlay for text visibility */
 }
 
 .hero-content {
@@ -486,7 +486,7 @@ header {
     font-weight: 900;
     margin-bottom: 2rem;
     line-height: 1.05;
-    text-shadow: 0 10px 40px rgba(0,0,0,0.8), 0 5px 15px rgba(0,0,0,0.5);
+    text-shadow: 0 10px 60px rgba(0,0,0,1), 0 5px 25px rgba(0,0,0,0.9), 0 0 40px rgba(255,0,0,0.2);
     animation: blurSlideIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
@@ -497,7 +497,7 @@ header {
     color: var(--text-light);
     font-weight: 500;
     line-height: 1.6;
-    text-shadow: 0 4px 15px rgba(0,0,0,0.8);
+    text-shadow: 0 4px 20px rgba(0,0,0,1), 0 2px 8px rgba(0,0,0,0.9);
     animation: fadeInRight 1s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
 }
 
