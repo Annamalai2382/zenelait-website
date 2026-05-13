@@ -429,6 +429,10 @@ header {
     border-bottom: 1px solid rgba(255, 0, 0, 0.2);
 }
 
+.subpage-hero .hero-overlay {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(20, 0, 0, 0.7), rgba(0, 0, 0, 0.9));
+}
+
 .subpage-hero h1 {
     text-shadow: 0 4px 20px rgba(0,0,0,0.65), 0 2px 4px rgba(0,0,0,0.4);
 }
