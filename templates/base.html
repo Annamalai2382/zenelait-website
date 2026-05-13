@@ -4,6 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        #main-content {
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+    </style>
     <meta name="description" content="{% block meta_description %}Zenelait Infotech - Innovating the Future with Technology. Premium IT Services, Mobile, Web & Cloud Solutions.{% endblock %}">
     <title>{% block title %}Zenelait Infotech - IT Solutions{% endblock %}</title>
     
@@ -65,7 +71,7 @@
     </header>
 
     <!-- Main Content -->
-    <main id="main-content" class="{% block reveal_class %}reveal-home{% endblock %}">
+    <main id="main-content" data-reveal="{% block reveal_class %}reveal-home{% endblock %}">
         {% if messages %}
         <div class="container" style="margin-top: 1rem;">
             {% for message in messages %}
@@ -134,12 +140,17 @@
             setTimeout(() => {
                 preloader.style.opacity = '0';
                 document.body.style.overflow = 'auto';
-                mainContent.classList.add('page-reveal');
                 
-            setTimeout(() => {
-                preloader.style.display = 'none';
-            }, 800);
-        }, 1500);
+                // Trigger the specific page reveal animation
+                const revealClass = mainContent.getAttribute('data-reveal');
+                mainContent.classList.add(revealClass);
+                mainContent.style.opacity = '1';
+                
+                setTimeout(() => {
+                    preloader.style.display = 'none';
+                }, 800);
+            }, 1500);
+        });
 
         // Mobile Menu Toggle
         const hamburger = document.querySelector('.hamburger');
