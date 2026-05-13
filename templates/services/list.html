@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Our Services - Zenelait Infotech{% endblock %}
+{% block reveal_class %}reveal-services{% endblock %}
+
+{% block content %}
+<!-- Services Hero Banner -->
+<section class="subpage-hero">
+    <div class="hero-video-wrapper">
+        <video autoplay muted loop playsinline preload="auto">
+            <source src="{% static 'videos/services-sunflowers.mp4' %}" type="video/mp4">
+        </video>
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="container" style="position:relative; z-index:10; text-align:center;">
+        <div style="max-width: 800px; margin:0 auto;">
+            <small style="color: var(--accent); font-weight:800; text-transform:uppercase; letter-spacing:2px; text-shadow: 0 2px 8px rgba(0,0,0,0.5);">Engineered Ecosystems</small>
+            <h1 style="font-size: 4rem; font-weight:800; margin: 1rem 0;">Join an <span style="color:var(--secondary); text-shadow: 0 4px 20px rgba(255, 0, 0, 0.4);">Empowered Collective</span></h1>
+            <p style="font-size:1.3rem; font-weight:500; line-height:1.8;">Discover tailored technological interventions fully aligned with your scaling objectives.</p>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="grid" style="grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));">
+            {% for s in services %}
+            <div class="card reveal-scale" style="position:relative; display:flex; flex-direction:column;">
+                <div class="card-icon"><i class="{{ s.icon_class }}"></i></div>
+                <h3>{{ s.title }}</h3>
+                <p style="color:var(--text-light); margin: 1rem 0 1.5rem; flex-grow:1;">{{ s.short_description }}</p>
+                <a href="{% url 'service-detail' s.slug %}" class="btn btn-primary" style="text-align:center;">View Methodology</a>
+            </div>
+            {% empty %}
+            <div style="grid-column: 1 / -1; text-align:center; padding: 5rem 0;">
+                <i class="fas fa-tools fa-3x" style="color:#cbd5e1; margin-bottom: 1rem;"></i>
+                <p style="color: var(--text-light);">Catalog updating. Contact us directly for immediate deployments.</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

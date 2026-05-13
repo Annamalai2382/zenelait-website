@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Contact Us - Zenelait Infotech{% endblock %}
+{% block reveal_class %}reveal-contact{% endblock %}
+
+{% block content %}
+<!-- Contact Us Hero Banner -->
+<section class="subpage-hero">
+    <div class="hero-video-wrapper">
+        <video autoplay muted loop playsinline preload="auto">
+            <source src="{% static 'videos/contact-droplets.mp4' %}" type="video/mp4">
+        </video>
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="container" style="position:relative; z-index:10;">
+        <div style="max-width: 800px;" class="reveal">
+            <small style="color: var(--accent); font-weight:800; text-transform:uppercase; letter-spacing:2px; text-shadow: 0 2px 8px rgba(0,0,0,0.5);">Connect with Us</small>
+            <h1 style="font-size: 4rem; font-weight:800; margin: 1rem 0;">Get in <span style="color:var(--secondary); text-shadow: 0 4px 20px rgba(255, 0, 0, 0.4);">Touch</span></h1>
+            <p style="font-size:1.3rem; font-weight:500; line-height:1.8;">Discuss your enterprise digitization, bespoke software architecture, or team scaling needs with our core advisory desk.</p>
+        </div>
+    </div>
+</section>
+
+<section class="section" style="background: transparent;">
+    <div class="container reveal">
+        <div class="contact-wrap">
+            <div>
+                <h3 style="margin-bottom:1.5rem; font-size: 1.5rem; color: var(--white);">Send an Inquiry</h3>
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label style="display:block; margin-bottom: 5px; font-weight:600; color: var(--text-main);">Your Name</label>
+                        <input type="text" name="name" class="form-control" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label style="display:block; margin-bottom: 5px; font-weight:600; color: var(--text-main);">Business Email</label>
+                        <input type="email" name="email" class="form-control" placeholder="john@company.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label style="display:block; margin-bottom: 5px; font-weight:600; color: var(--text-main);">Subject</label>
+                        <input type="text" name="subject" class="form-control" placeholder="Query related to...">
+                    </div>
+                    <div class="form-group">
+                        <label style="display:block; margin-bottom: 5px; font-weight:600; color: var(--text-main);">Message</label>
+                        <textarea name="message" rows="5" class="form-control" placeholder="Elaborate briefly..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width:100%; font-size:1rem; border:none;">Dispatch Message</button>
+                </form>
+            </div>
+            
+            <div>
+                <h3 style="margin-bottom:1.5rem; font-size: 1.5rem; color: var(--white);">Operational Hub</h3>
+                <div class="shine-hover" style="position: relative; height: 300px; border-radius: 15px; overflow: hidden; border: 1px solid var(--glass-border); margin-bottom: 2rem; box-shadow: var(--shadow-md);">
+                    <video autoplay muted loop playsinline preload="auto" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                        <source src="{% static 'videos/contact-code.mp4' %}" type="video/mp4">
+                    </video>
+                    <div style="position: absolute; top: 1.5rem; left: 1.5rem; z-index: 5;">
+                        <div class="logo-text-wrap" style="padding: 8px 15px; box-shadow: 0 4px 20px rgba(0,0,0,0.4); transform: scale(0.85); transform-origin: top left;">
+                            <div class="logo-main-serif" style="font-size: 1.6rem;">ZEN<span class="red-text">EL</span>AIT</div>
+                            <div class="logo-sub-serif" style="font-size: 0.55rem; letter-spacing: 3px;">INFO TECH</div>
+                        </div>
+                    </div>
+                    <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); padding: 1.5rem;">
+                        <p style="color: #fff; font-weight: 700; text-align: left; margin: 0; font-size: 1.1rem;">
+                            <i class="fas fa-building" style="color: var(--secondary); margin-right: 8px;"></i> Anna Nagar Tech Center
+                        </p>
+                        <a href="https://maps.app.goo.gl/stPexqWhWA6ai5iQ9" target="_blank" class="btn btn-outline" style="margin-top:1rem; pointer-events: auto;">View on Google Maps</a>
+                    </div>
+                </div>
+                <ul style="list-style:none;">
+                    <li style="margin-bottom: 1rem; color: var(--text-light);"><a href="https://maps.app.goo.gl/stPexqWhWA6ai5iQ9" target="_blank" style="color:inherit; transition:var(--transition-smooth);"><i class="fas fa-map-pin" style="color:var(--primary); width:25px;"></i> 1st Main St, Y Block, Anna Nagar, Chennai - 600040.</a></li>
+                    <li style="margin-bottom: 1rem; color: var(--text-light);"><a href="tel:+914412345678" style="color:inherit;"><i class="fas fa-phone-alt" style="color:var(--primary); width:25px;"></i> +91 (44) 1234 5678</a></li>
+                    <li style="color: var(--text-light);"><a href="mailto:contact@zenelait.com" style="color:inherit;"><i class="fas fa-envelope-open" style="color:var(--primary); width:25px;"></i> contact@zenelait.com</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+

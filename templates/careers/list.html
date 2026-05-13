@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Careers - Grow With Us | Zenelait Infotech{% endblock %}
+{% block reveal_class %}reveal-careers{% endblock %}
+
+{% block content %}
+<!-- Careers Hero Banner -->
+<section class="subpage-hero">
+    <div class="hero-video-wrapper">
+        <video autoplay muted loop playsinline preload="auto">
+            <source src="{% static 'videos/careers-butterfly.mp4' %}" type="video/mp4">
+        </video>
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="container" style="position:relative; z-index:10; text-align:center;">
+        <div style="max-width: 800px; margin:0 auto;">
+            <small style="color: var(--accent); font-weight:800; text-transform:uppercase; letter-spacing:2px; text-shadow: 0 2px 8px rgba(0,0,0,0.5);">Cultivate Your Potential</small>
+            <h1 style="font-size: 4rem; font-weight:800; margin: 1rem 0;">Join an <span style="color:var(--secondary); text-shadow: 0 4px 20px rgba(200, 90, 60, 0.35);">Empowered Collective</span></h1>
+            <p style="font-size:1.3rem; font-weight:500; line-height:1.8;">We thrive on collaborative intelligence. Explore high-impact mandates mapped specifically to redefine your unique career trajectory.</p>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container" style="max-width: 900px;">
+        <div style="display:flex; flex-direction:column; gap:1.5rem;">
+            {% for j in jobs %}
+            <div class="card" style="display:flex; justify-content:space-between; align-items:center; transition: var(--transition-smooth); padding: 2.5rem; background: var(--dark-surface); border-radius:15px; box-shadow: var(--shadow-md);" onmouseover="this.style.borderColor='var(--primary)'" onmouseout="this.style.borderColor='var(--glass-border)'">
+                <div>
+                    <span style="background: rgba(255, 77, 36, 0.15); color: var(--primary); padding: 6px 15px; border-radius: 20px; font-size:0.75rem; font-weight:800; text-transform:uppercase; border: 1px solid var(--glass-border); letter-spacing:0.5px;">{{ j.department }}</span>
+                    <h3 style="margin: 15px 0 8px; font-size: 1.6rem; font-weight:800; color:var(--white);">{{ j.title }}</h3>
+                    <p style="color:var(--text-light); font-size: 0.95rem; margin:0;"><i class="fas fa-map-marker-alt" style="color:var(--primary); margin-right:5px;"></i> {{ j.location }} &nbsp;|&nbsp; <i class="fas fa-clock" style="color:var(--secondary); margin-right:5px;"></i> {{ j.get_job_type_display }}</p>
+                </div>
+                <div>
+                    <a href="{% url 'job-apply' j.pk %}" class="btn btn-primary">Apply Now</a>
+                </div>
+            </div>
+            {% empty %}
+            <div class="card" style="text-align:center; padding: 5rem 3rem; background: var(--dark-surface); border-radius:15px;">
+                <i class="fas fa-briefcase fa-3x" style="color: var(--primary); opacity:0.5; margin-bottom: 1.5rem;"></i>
+                <h3 style="color:var(--white); font-size:1.8rem; margin-bottom: 0.5rem;">Scaling New Horizons.</h3>
+                <p style="text-align:center; max-width: 600px; margin: 0 auto; color: var(--text-light);">We are fully staffed at this instant, but always scouting exceptional talent. Please forward resumes to careers@zenelait.com.</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

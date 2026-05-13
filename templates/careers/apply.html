@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Apply for {{ job.title }} - Zenelait Infotech{% endblock %}
+
+{% block content %}
+<!-- Career Application Hero -->
+<section class="subpage-hero">
+    <div class="hero-video-wrapper">
+        <video autoplay muted loop playsinline preload="auto">
+            <source src="{% static 'videos/careers-butterfly.mp4' %}" type="video/mp4">
+        </video>
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="container" style="position:relative; z-index:10; text-align:center;">
+        <div style="max-width: 800px; margin: 0 auto;">
+            <div style="background: rgba(255, 0, 0, 0.15); display: inline-flex; align-items: center; gap: 10px; padding: 10px 20px; border-radius: 50px; border: 1px solid rgba(255, 255, 255, 0.1); margin-bottom: 2rem;">
+                <span style="color: var(--white); font-weight: 700; text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem;">Talent Acquisition</span>
+            </div>
+            <h1 style="font-size: 4.5rem; font-weight:900; margin: 0; line-height: 1.1; text-shadow: 0 10px 30px rgba(0,0,0,0.5);">Join the <span class="red-text">Elite.</span></h1>
+            <p style="margin-top: 1.5rem; font-size: 1.3rem; opacity: 0.9; font-weight: 500;">Submit your portfolio for the <span style="color: var(--secondary);">{{ job.title }}</span> role.</p>
+        </div>
+    </div>
+</section>
+
+<section class="section" style="background: var(--dark);">
+    <div class="container" style="max-width: 800px;">
+        <div class="reveal" style="background: rgba(61, 0, 0, 0.4); backdrop-filter: blur(15px); padding: 4rem; border-radius: 20px; border: 1px solid rgba(255, 0, 0, 0.2); box-shadow: var(--shadow-lg);">
+            <div style="margin-bottom: 3rem; padding-bottom:1.5rem; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                <h2 style="margin-bottom: 10px; color: var(--white); font-size: 2.2rem;">Application <span class="red-text">Dossier</span></h2>
+                <div style="display: flex; gap: 2rem; margin-top: 10px;">
+                    <small style="color:var(--text-light);"><i class="fas fa-briefcase" style="color: var(--primary); margin-right: 5px;"></i> {{ job.department }}</small>
+                    <small style="color:var(--text-light);"><i class="fas fa-map-marker-alt" style="color: var(--primary); margin-right: 5px;"></i> {{ job.location }}</small>
+                </div>
+            </div>
+
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group" style="margin-bottom: 2rem;">
+                    <label style="font-weight:600; display:block; margin-bottom: 10px; color: var(--white);">Full Name</label>
+                    <input type="text" name="full_name" class="form-control" placeholder="Enter your professional name" required>
+                </div>
+                
+                <div style="display:grid; grid-template-columns: 1fr 1fr; gap:2rem; margin-bottom: 2rem;">
+                    <div class="form-group">
+                        <label style="font-weight:600; display:block; margin-bottom: 10px; color: var(--white);">Professional Email</label>
+                        <input type="email" name="email" class="form-control" placeholder="name@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label style="font-weight:600; display:block; margin-bottom: 10px; color: var(--white);">Contact Number</label>
+                        <input type="text" name="phone" class="form-control" placeholder="+91 ..." required>
+                    </div>
+                </div>
+
+                <div class="form-group" style="margin-bottom: 2rem;">
+                    <label style="font-weight:600; display:block; margin-bottom: 10px; color: var(--white);">Resume / Curriculum Vitae (PDF Preferred)</label>
+                    <div style="position: relative;">
+                        <input type="file" name="resume" class="form-control" style="padding: 12px; height: auto;" required>
+                    </div>
+                </div>
+
+                <div class="form-group" style="margin-bottom: 2.5rem;">
+                    <label style="font-weight:600; display:block; margin-bottom: 10px; color: var(--white);">Cover Letter / Professional Summary</label>
+                    <textarea name="cover_letter" rows="5" class="form-control" placeholder="Briefly describe your core competencies..."></textarea>
+                </div>
+                
+                <div style="display:flex; gap: 1.5rem; margin-top: 3rem; align-items: center;">
+                    <a href="{% url 'job-list' %}" style="color: var(--text-light); text-decoration: none; font-weight: 600; transition: 0.3s;">
+                        <i class="fas fa-arrow-left" style="margin-right: 8px;"></i> Back to Careers
+                    </a>
+                    <button type="submit" class="btn btn-primary" style="flex-grow:1; padding: 1.2rem; font-size: 1.1rem; border: none; box-shadow: 0 10px 20px rgba(255, 0, 0, 0.4);">Dispatch Application</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}

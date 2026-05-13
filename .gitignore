@@ -1,0 +1,12 @@
+venv/
+*.pyc
+__pycache__/
+db.sqlite3
+.env
+static_cdn/
+media_cdn/
+.firebaserc
+firebase.json
+firebase-debug.log
+static/videos/
+.gemini/

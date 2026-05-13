@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ service.title }} - Zenelait Infotech{% endblock %}
+
+{% block content %}
+<!-- Service Detail Hero -->
+<section class="subpage-hero">
+    <div class="hero-video-wrapper">
+        <video autoplay muted loop playsinline preload="auto">
+            <source src="{% static 'videos/contact-code.mp4' %}" type="video/mp4">
+        </video>
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="container" style="position:relative; z-index:10; text-align:center;">
+        <div style="max-width: 800px; margin: 0 auto;">
+            <div style="background: rgba(255, 0, 0, 0.15); display: inline-flex; align-items: center; gap: 10px; padding: 10px 20px; border-radius: 50px; border: 1px solid rgba(255, 255, 255, 0.1); margin-bottom: 2rem;">
+                <i class="{{ service.icon_class }}" style="color: var(--secondary);"></i>
+                <span style="color: var(--white); font-weight: 700; text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem;">Vertical Specialization</span>
+            </div>
+            <h1 style="font-size: 4.5rem; font-weight:900; margin: 0; line-height: 1.1; text-shadow: 0 10px 30px rgba(0,0,0,0.5);">{{ service.title }}</h1>
+        </div>
+    </div>
+</section>
+
+<section class="section" style="background: var(--dark);">
+    <div class="container">
+        <div style="display:grid; grid-template-columns: 2fr 1fr; gap:4rem; align-items: start;">
+            <div class="reveal">
+                {% if service.image %}
+                <div class="shine-hover" style="border-radius: 20px; overflow:hidden; margin-bottom: 3rem; box-shadow: var(--shadow-lg); border: 1px solid rgba(255,255,255,0.1);">
+                    <img src="{{ service.image.url }}" alt="{{ service.title }}" style="width:100%; display:block; transition: 0.5s ease;">
+                </div>
+                {% endif %}
+                
+                <div class="section-header" style="text-align:left; margin-bottom: 2rem;">
+                    <h2 style="font-size: 2.2rem; color: var(--white);">Deployment <span class="red-text">Methodology</span></h2>
+                </div>
+                
+                <div style="line-height: 1.8; font-size:1.15rem; color: var(--text-main);">
+                    {{ service.detailed_description|linebreaks }}
+                </div>
+
+                <!-- Process Steps (Added for "Complete" look) -->
+                <div style="margin-top: 4rem; display: grid; gap: 2rem;">
+                    <div class="card" style="display:flex; gap: 2rem; align-items: center; padding: 2rem;">
+                        <div style="font-size: 2rem; font-weight: 900; color: var(--primary); opacity: 0.3;">01</div>
+                        <div>
+                            <h4 style="margin-bottom: 0.5rem; color: var(--white);">Requirement Architecture</h4>
+                            <p style="margin:0; font-size: 0.95rem; color: var(--text-light);">Deep analysis of business logic and infrastructure constraints to map the technical roadmap.</p>
+                        </div>
+                    </div>
+                    <div class="card" style="display:flex; gap: 2rem; align-items: center; padding: 2rem;">
+                        <div style="font-size: 2rem; font-weight: 900; color: var(--primary); opacity: 0.3;">02</div>
+                        <div>
+                            <h4 style="margin-bottom: 0.5rem; color: var(--white);">Agile Engineering</h4>
+                            <p style="margin:0; font-size: 0.95rem; color: var(--text-light);">Iterative development loops with continuous CI/CD integration and comprehensive testing.</p>
+                        </div>
+                    </div>
+                    <div class="card" style="display:flex; gap: 2rem; align-items: center; padding: 2rem;">
+                        <div style="font-size: 2rem; font-weight: 900; color: var(--primary); opacity: 0.3;">03</div>
+                        <div>
+                            <h4 style="margin-bottom: 0.5rem; color: var(--white);">Global Deployment</h4>
+                            <p style="margin:0; font-size: 0.95rem; color: var(--text-light);">Final push to production environments with scalable load-balancing and security audits.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="reveal delay-2">
+                <div style="background: rgba(61, 0, 0, 0.4); backdrop-filter: blur(15px); padding: 3rem 2.5rem; border-radius: 20px; border: 1px solid rgba(255, 0, 0, 0.2); box-shadow: var(--shadow-lg); position: sticky; top: 120px;">
+                    <h3 style="margin-bottom: 1.5rem; color: var(--white); font-size: 1.6rem;">Initiate Vertical <span class="red-text">Scale</span></h3>
+                    <p style="color: var(--text-light); margin-bottom: 2.5rem; line-height: 1.6;">Engage our principal consultants specialized in {{ service.title }} for a tailor-made technological intervention.</p>
+                    <a href="{% url 'contact' %}?ref={{ service.slug }}" class="btn btn-primary" style="width:100%; text-align:center; box-sizing:border-box; padding: 1.2rem;">Start Proposal</a>
+                    
+                    <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1);">
+                        <p style="font-size: 0.85rem; color: var(--text-light);"><i class="fas fa-check-circle" style="color: var(--primary); margin-right: 8px;"></i> 24/7 Enterprise Support</p>
+                        <p style="font-size: 0.85rem; color: var(--text-light); margin-top: 10px;"><i class="fas fa-check-circle" style="color: var(--primary); margin-right: 8px;"></i> Dedicated Project Manager</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

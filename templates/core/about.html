@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}About Us - Zenelait Infotech{% endblock %}
+{% block reveal_class %}reveal-about{% endblock %}
+
+{% block content %}
+<!-- About Us Hero Banner -->
+<section class="subpage-hero">
+    <div class="hero-video-wrapper">
+        <video autoplay muted loop playsinline preload="auto">
+            <source src="{% static 'videos/about-falls.mp4' %}" type="video/mp4">
+        </video>
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="container" style="position:relative; z-index:10;">
+        <div style="max-width: 900px;">
+            <small style="color: var(--accent); font-weight:800; text-transform:uppercase; letter-spacing:2px; text-shadow: 0 2px 8px rgba(0,0,0,0.5);">Anna Nagar's Leading Product-Based IT Hub</small>
+            <h1 style="font-size: 4.5rem; font-weight:900; margin: 1rem 0;">Engineering <span style="color:var(--secondary); text-shadow: 0 4px 20px rgba(255, 0, 0, 0.4);">Tomorrow's Products</span></h1>
+            <p style="font-size:1.4rem; font-weight:500; line-height:1.8;">Zenelait Info Tech is a premier product-based software company in Chennai, dedicated to architecting secure, scalable, and user-friendly digital ecosystems for businesses of all sizes.</p>
+        </div>
+    </div>
+</section>
+
+<section class="section" style="background: var(--dark);">
+    <div class="container reveal">
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items:center;">
+            <div>
+                <h2 style="margin-bottom:1.5rem; color:var(--white); border-left: 4px solid var(--primary); padding-left: 15px;">Who We Are</h2>
+                <p style="color: var(--text-main); font-size:1.1rem; margin-bottom:1.5rem; line-height:1.8;">Located in the heart of Anna Nagar, Chennai, Zenelait Info Tech specializes in building custom software products that empower startups, SMEs, and large enterprises. We bridge the gap between complex business challenges and innovative technology solutions.</p>
+                <p style="color: var(--text-light);">Our focus is on delivering high-quality development, timely delivery, and long-term support. As a trusted product-based organization, we ensure that every solution we build—from ERP systems to mobile applications—is engineered to absorb massive concurrency and scale effortlessly.</p>
+            </div>
+            <div class="shine-hover" style="border-radius: 20px; overflow:hidden; box-shadow: var(--shadow-lg); border: 1px solid rgba(255,255,255,0.1);">
+                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Global Team" style="width:100%; display:block; transition: 0.5s ease;">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="grid" style="grid-template-columns: repeat(3, 1fr);">
+            <div class="card" style="text-align:center; border-radius:10px;">
+                <i class="fas fa-rocket fa-3x" style="color: var(--primary); margin-bottom: 1.5rem;"></i>
+                <h3>Mission</h3>
+                <p style="margin-top:1rem; color:var(--text-light);">To engineer standard-setting enterprise SaaS products that facilitate seamless workflows and optimize organizational outputs on a massive global scale.</p>
+            </div>
+            <div class="card" style="text-align:center; border-radius:10px;">
+                <i class="fas fa-eye fa-3x" style="color: var(--secondary); margin-bottom: 1.5rem;"></i>
+                <h3>Vision</h3>
+                <p style="margin-top:1rem; color:var(--text-light);">To become the preeminent vendor of unified digital ecosystems by establishing proprietary benchmark technologies across core industry sectors.</p>
+            </div>
+            <div class="card" style="text-align:center; border-radius:10px;">
+                <i class="fas fa-gem fa-3x" style="color: var(--accent); margin-bottom: 1.5rem;"></i>
+                <h3>Product Values</h3>
+                <p style="margin-top:1rem; color:var(--text-light);">Precision, high availability, ironclad security, and modular scalability represent the core tenets of our continuous R&D engineering loop.</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

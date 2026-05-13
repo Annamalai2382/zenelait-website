@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Latest Insights & News - Zenelait Infotech{% endblock %}
+
+{% block content %}
+<!-- Insights Hero Banner -->
+<section class="subpage-hero">
+    <div class="hero-video-wrapper">
+        <video autoplay muted loop playsinline preload="auto" style="filter: hue-rotate(250deg) saturate(2.5) brightness(1.5) contrast(1.2) !important;">
+            <source src="{% static 'videos/insights-data.mp4' %}" type="video/mp4">
+        </video>
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="container" style="position:relative; z-index:10;">
+        <div style="max-width: 800px;">
+            <small style="color: var(--accent); font-weight:800; text-transform:uppercase; letter-spacing:2px; text-shadow: 0 2px 8px rgba(0,0,0,0.5);">Strategic Perspectives</small>
+            <h1 style="font-size: 4rem; font-weight:800; margin: 1rem 0;">Tech <span style="color:var(--secondary); text-shadow: 0 4px 20px rgba(200, 90, 60, 0.35);">Insights Hub</span></h1>
+            <p style="font-size:1.3rem; font-weight:500; line-height:1.8;">The latest intelligence, strategy and technological paradigms curated by our product leads.</p>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="grid">
+            {% for post in posts %}
+            <div class="blog-card">
+                {% if post.thumbnail %}
+                    <img src="{{ post.thumbnail.url }}" alt="{{ post.title }}">
+                {% else %}
+                    <div style="height:220px; background:#e2e8f0; display:flex; align-items:center; justify-content:center;"><i class="fas fa-newspaper fa-2x" style="color:#cbd5e1;"></i></div>
+                {% endif %}
+                <div class="blog-body">
+                    <small style="color:var(--primary); font-weight:700;">{{ post.category|upper }}</small> • <small style="color:var(--text-light);">{{ post.created_at|date:"M d, Y" }}</small>
+                    <h3 style="margin: 1rem 0;">{{ post.title }}</h3>
+                    <p style="color:var(--text-light); font-size:0.9rem; margin-bottom: 1.5rem;">{{ post.summary|truncatechars:120 }}</p>
+                    <a href="{% url 'blog-detail' post.slug %}" class="btn" style="padding: 0.5rem 0; color:var(--primary); background:none; font-weight:bold; border-bottom:2px solid var(--primary); border-radius:0;">Continue Reading <i class="fas fa-chevron-right" style="font-size:0.7rem; margin-left:5px;"></i></a>
+                </div>
+            </div>
+            {% empty %}
+            <p style="grid-column: 1 / -1; text-align:center;">Updates scheduled soon. Standby.</p>
+            {% endfor %}
+        </div>
+        
+        <!-- Pagination -->
+        {% if is_paginated %}
+        <div style="display:flex; justify-content:center; margin-top: 4rem; gap: 10px;">
+            {% if page_obj.has_previous %}
+                <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-outline" style="color:var(--primary); border-color:var(--primary);">&laquo; Previous</a>
+            {% endif %}
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}" class="btn btn-outline" style="color:var(--primary); border-color:var(--primary);">Next &raquo;</a>
+            {% endif %}
+        </div>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}
