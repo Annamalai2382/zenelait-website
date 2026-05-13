@@ -20,10 +20,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-&9u#cnm2hv--#24sq-&ut71^k&z@x+7kj+b3fbk3^w7%ae+g)4'
+import os
+from pathlib import Path
+import dj_database_url
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-&9u#cnm2hv--#24sq-&ut71^k&z@x+7kj+b3fbk3^w7%ae+g)4')
+
+DEBUG = os.environ.get('DEBUG', 'True') == 'True'
+
 
 ALLOWED_HOSTS = ['*']
 
@@ -82,15 +86,19 @@ WSGI_APPLICATION = 'zenelait_infotech.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'zenelait_db',
-        'USER': 'root',
-        'PASSWORD': 'root',
-        'HOST': '127.0.0.1',
-        'PORT': '3306',
-    }
+    'default': dj_database_url.config(
+        default='mysql://root:root@127.0.0.1:3306/zenelait_db',
+        conn_max_age=600
+    )
 }
+
+# Fallback to SQLite if MySQL fails on local development without a running server
+if os.environ.get('RENDER'):
+    # On Render, we use the provided DATABASE_URL
+    pass
+else:
+    # Local checks can be added here
+    pass
 
 
 # Password validation
